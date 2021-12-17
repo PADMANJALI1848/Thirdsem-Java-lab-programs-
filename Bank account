@@ -1,0 +1,160 @@
+import java.util.*;
+class Account
+{
+double acc_no;
+String type;
+String name;
+double bal;
+Scanner read = new Scanner(System.in);
+void accept()
+{
+System.out.println("Enter your name :: ");
+name=read.nextLine();
+System.out.println("Enter your account number :: ");
+acc_no=read.nextDouble();
+read.nextLine();
+System.out.println("Enter the type of account :: ");
+type=read.nextLine();
+System.out.println("Enter the balance in your account :: ");
+bal=read.nextDouble();
+}
+void withdraw()
+{
+  double a;
+  System.out.println("Enter the amount you want to withdraw :: ");
+  a=read.nextDouble();
+  if(bal>a)
+  {
+if(bal<700)
+{
+bal=bal-150;
+System.out.println("BALANCE(after penalty) :: "+bal);
+System.out.println("Maintain a minimum balance of 700 and more or else penalties are imposed");}
+bal=bal-a;
+System.out.println("BALANCE :: "+bal);
+  }
+  else
+  {
+System.out.println("*****BALANCE IS INSUFFICIENT*****");
+  }
+}
+void deposit()
+{
+double dep;
+if(bal<700)
+{
+bal=bal-150;
+System.out.println("BALANCE :: "+bal);
+}
+System.out.println("Enter the amount you want to deposit :: ");
+dep=read.nextDouble();
+bal=bal+dep;
+System.out.println("BALANCE :: "+bal);
+}
+}
+
+class CurrAcct extends Account
+{
+Scanner read = new Scanner(System.in);
+void chequeBook(){
+  double a;
+  System.out.println("Cheque Facility is available");
+  System.out.println("Enter the amount you want to withdraw through cheque :: ");
+  a=read.nextDouble();
+  if(bal>a)
+  {
+if(bal<700)
+{
+bal=bal-150;
+System.out.println("BALANCE(after penalty) :: "+bal);
+System.out.println("Maintain a minimum balance of 700 and more or else penalties are imposed");}
+bal=bal-a;
+System.out.println("BALANCE :: "+bal);
+  }
+  else
+  {
+System.out.println("*****BALANCE IS INSUFFICIENT*****");
+  }
+}
+void interest(){
+System.out.println("Interest services aren't offered!!");
+}
+}
+
+class SavAcct extends Account{
+Scanner read = new Scanner(System.in);
+void chequeBook()
+{
+System.out.println("Cheque Book facility isn't offered");
+}
+void interest()
+{ int t;
+double i;
+System.out.println("The rate of interest is 5%");
+System.out.println("Enter the time period :: ");
+t=read.nextInt();
+bal = bal + Math.pow(1+(0.05/12),12*t);
+System.out.println("BALANCE :: "+bal);
+}
+}
+
+class Bank
+{
+public static void main(String args[])
+{
+Scanner read = new Scanner(System.in);
+int c;
+CurrAcct a1 = new CurrAcct();
+SavAcct a2 = new SavAcct();
+System.out.println("Enter the type of Account :: 1.Current Account\t2.Savings Account");
+c=read.nextInt();
+if(c==1)
+{
+a1.accept();
+int option;
+System.out.println("1.Deposit\n2.Withdraw\n3.Cheque Book\n4.Interest");
+option=read.nextInt();
+switch(option)
+{
+case 1:
+a1.deposit();
+break;
+case 2 :
+a1.withdraw();
+break;
+case 3:
+a1.chequeBook();
+break;
+case 4:
+a1.interest();
+break;
+default:
+System.out.println("Invalid choice");
+}
+}
+if(c==2)
+{
+a2.accept();
+int option;
+System.out.println("1.Deposit\n2.Withdraw\n3.Cheque Book\n4.Interest");
+option=read.nextInt();
+switch(option)
+{
+case 1:
+a2.deposit();
+break;
+case 2 :
+a2.withdraw();
+break;
+case 3:
+a2.chequeBook();
+break;
+case 4:
+a2.interest();
+break;
+default:
+System.out.println("Invalid choice");
+}
+}
+}
+}
