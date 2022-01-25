@@ -1,0 +1,51 @@
+import java.util.*;
+class Multiple<T,V>
+{
+	T a;
+	V b;
+	Multiple(T o1,V o2)
+	{
+		a=o1;
+		b=o2;
+	}
+	void showType()
+	{
+		System.out.println("Type of first : "+a.getClass().getName());
+		System.out.println("Type of second : "+b.getClass().getName());
+	}
+	T geta()
+	{
+		return a;
+	}
+	V getb()
+	{
+		return b;
+	}	
+}
+
+class Gene
+{
+	public static void main(String args[]){
+		Scanner read = new Scanner(System.in);
+		System.out.println("Enter any string : ");
+		String str = read.nextLine();
+		System.out.println("Enter any number : ");
+		int num = read.nextInt();
+		System.out.println("------------------------------------");
+		System.out.println("Enter any double number : ");
+		double num1 = read.nextDouble(); 
+		System.out.println("Enter any string : ");
+		String str1 = read.next();
+		read.nextLine();
+		
+		Multiple<String , Integer> obj = new Multiple<String , Integer>(str,num);
+		obj.showType();
+		System.out.println("The value is : "+obj.geta());
+		System.out.println("The value is : "+obj.getb());
+		System.out.println("------------------------------------");
+		Multiple<String , Double> obj1 = new Multiple<String , Double>(str1,num1);
+		obj1.showType();
+		System.out.println("The value is : "+obj1.geta());
+		System.out.println("The value is : "+obj1.getb());
+	}
+}
