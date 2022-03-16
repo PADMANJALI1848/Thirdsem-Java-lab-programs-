@@ -1,45 +1,56 @@
 import java.util.*;
-class Book{
-String name;
-String author;
-int price;
-int num_pages;
-
-void accept(){
-Scanner read = new Scanner(System.in);
-System.out.println("Enter the name of the book");
-name=read.nextLine();
-System.out.println("Enter the author of the book");
-author=read.nextLine();
-System.out.println("Enter the price of the book");
-price=read.nextInt();
-System.out.println("Enter the number of pages of the book");
-num_pages=read.nextInt();
+class book
+{
+String name,author;
+int price,nop;
+book()
+{
 }
-public String toString(){
-return("Name:"+name+"\n"+"Author:"+author+"\n"+"Price:"+price+"\n"+"Number of pages:"+num_pages);
+book(String name,String author,int price,int nop)
+{
+this.name=name;
+this.author=author;
+this.price=price;
+this.nop=nop;
+}
+void accept()
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter the name of the book:");
+name=sc.nextLine();
+System.out.println("Enter the name of the author:");
+author=sc.nextLine();
+System.out.println("Enter the price of the book:");
+price=sc.nextInt();
+System.out.println("Enter the number of pages:");
+nop=sc.nextInt();
+}
+void tostring()
+{
+System.out.println("Name:"+name+"\nAuthor:"+author+"\nPrice of the book:"+price+"\nNumber of pages:"+nop);
 }
 }
-
-class Details{
-public static void main(String args[]){
+class main2
+{
+public static void main(String args[])
+{
 int n,i;
-System.out.println("Enter the number of books");
-Scanner read=new Scanner(System.in);
-n=read.nextInt();
-Book b[]=new Book[n];
+Scanner sc=new Scanner(System.in);
+book b1=new book("XYZ","ABC",20,80);
+b1.tostring();
+System.out.println("Enter the number of books:");
+n=sc.nextInt();
+book b[]=new book[n];
 for(i=0;i<n;i++)
 {
-  b[i]=new Book();
-  System.out.println("Enter the details of the Book-"+(i+1));
-  b[i].accept();
+b[i]=new book();
+System.out.println("Enter the details of book"+(i+1));
+b[i].accept();
 }
 for(i=0;i<n;i++)
 {
- System.out.println(" ");
- System.out.println("Details of Book-"+(i+1));
- System.out.println(b[i].toString());
- System.out.println(" ");
+System.out.println("Display the details:");
+b[i].tostring();
 }
 }
 }
